@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: mcr.microsoft.com/dotnet/framework/aspnet
+    image: mcr.microsoft.com/dotnet/framework/aspnet:4.8
     commands:
     - dotnet build
       
