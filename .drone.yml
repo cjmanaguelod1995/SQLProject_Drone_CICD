@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: ashwiniw/msbuild:1709-webdeploy
+    image: alexellisio/msbuild:12-4.6.1
     commands:
     - dotnet build
       
