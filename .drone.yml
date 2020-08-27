@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: pull alexellisio/msbuild:12
+    image: nugardt/msbuild:15.5
     commands:
     - dotnet build
       
