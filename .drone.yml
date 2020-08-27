@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: chemsorly/msbuilder:latest
+    image: nugardt/msbuild:12.0
     commands:
     - msbuild.exe
       
