@@ -5,9 +5,9 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: rollersoftware/msbuild-windowsservercore:latest
+    image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
-    - msbuild.exe
+    - dotnet build
       
 trigger:
   branch:
