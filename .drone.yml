@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: webkitdev/msbuild:latest
+    image: alexellisio/msbuild:12-4.6.1
     commands:
     - msbuild.exe
       
