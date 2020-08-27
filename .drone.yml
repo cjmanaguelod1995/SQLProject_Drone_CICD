@@ -7,7 +7,7 @@ steps:
   - name: Build Sql Project
     image: didstopia/msbuild:latest
     commands:
-    - docker build -t guid-generator-assets .
+    - msbuild.exe
       
 trigger:
   branch:
