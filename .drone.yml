@@ -6,8 +6,8 @@ steps:
 
   - name: Build Sql Project
     image: pull 404htm/msbuild
-    ##commands:
-      ##- docker build -t guid-generator-assets .
+    commands:
+    - docker build -t guid-generator-assets .
       
 trigger:
   branch:
