@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: netpotential/msbuild:latest
+    image: rollersoftware/msbuild-windowsservercore:latest
     commands:
     - msbuild.exe
       
