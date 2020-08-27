@@ -5,9 +5,9 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: docker pull alexellisio/msbuild:12.0
-    commands:
-      - docker build -t guid-generator-assets .
+    image: pull 404htm/msbuild
+    ##commands:
+      ##- docker build -t guid-generator-assets .
       
 trigger:
   branch:
