@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: didstopia/msbuild:latest
+    image: sjawhar/msbuild-ssdt:latest
     commands:
     - msbuild.exe
       
