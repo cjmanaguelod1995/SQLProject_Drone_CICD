@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: mcr.microsoft.com/dotnet/framework/aspnet:4.8
+    image: garrigueta/buildtools2019:latest
     commands:
     - dotnet build
       
