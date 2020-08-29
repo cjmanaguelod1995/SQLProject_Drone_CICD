@@ -5,9 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: quadam/msbuild
-    commands:
-    - dotnet build
+    image: mrjamiebowman/msbuild:latest
       
 trigger:
   branch:
