@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: nosinovacao/dotnet-sonar
+    image: manapolitan/msbuild
     commands:
     - dotnet build SQLProject_Drone_CICD.sln
       
