@@ -6,6 +6,8 @@ steps:
 
   - name: Build Sql Project
     image: nosinovacao/dotnet-sonar
+    commands:
+    - dotnet build
       
 trigger:
   branch:
