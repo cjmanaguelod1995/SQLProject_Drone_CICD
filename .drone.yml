@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: hstntexans/ssdt-proj-builder
+    image: sjawhar/msbuild-ssdt:latest
     commands:
     - dotnet build SQLProject_Drone_CICD.sln
       
