@@ -5,7 +5,7 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: mboshoven/ssdt
+    image: crate
     commands:
     - dotnet build SQLProject_Drone_CICD.sln
       
