@@ -7,7 +7,7 @@ steps:
   - name: Build Sql Project
     image: nosinovacao/dotnet-sonar
     commands:
-    - dotnet build
+    - dotnet build SQLProject_Drone_CICD\SQLProject_Drone_CICD.sqlproj
       
 trigger:
   branch:
