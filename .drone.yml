@@ -7,12 +7,12 @@ steps:
   - name: clean
     image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
-     - dotnet clean SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
+     - dotnet clean SQLProject_Drone_CICD.sln
      
   - name: build
     image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
-     - dotnet build SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
+     - dotnet build SQLProject_Drone_CICD.sln
       
 trigger:
   branch:
