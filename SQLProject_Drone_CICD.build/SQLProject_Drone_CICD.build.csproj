@@ -3,6 +3,6 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="..\SQLProject_Drone_CICD\**\*.sql" />
+		<Content Include="..\SQLProject_Drone_CICD\**\*.sql" /> 
 	</ItemGroup>
 </Project>
