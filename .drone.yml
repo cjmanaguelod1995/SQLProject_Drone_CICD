@@ -8,10 +8,9 @@ steps:
     image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
      - dotnet clean SQLProject_Drone_CICD.sln
-     - dotnet add package MSBuild.Sdk.SqlProj --version 1.3.0
      
   - name: build
-    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
      - dotnet build SQLProject_Drone_CICD.sln
       

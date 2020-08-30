@@ -61,6 +61,5 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="script\TestTable.sql" />
-    <Build Include="TestView.sql" />
   </ItemGroup>
 </Project>
