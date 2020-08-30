@@ -5,9 +5,9 @@ name: PR Checker
 steps:    
 
   - name: Build Sql Project
-    image: mcr.microsoft.com/dotnet/framework/aspnet:4.8
+    image: dockersamples/assets-db-builder
     commands:
-    - dotnet build
+    - dotnet build SQLProject_Drone_CICD.sln
       
 trigger:
   branch:
