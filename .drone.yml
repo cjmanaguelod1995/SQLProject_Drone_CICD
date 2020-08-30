@@ -10,7 +10,7 @@ steps:
      - dotnet clean SQLProject_Drone_CICD.sln
      
   - name: build
-    image: mcr.microsoft.com/dotnet/sdk:latest
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
     commands:
      - dotnet build SQLProject_Drone_CICD.sln
       
