@@ -1,13 +1,18 @@
 kind: pipeline
 type: docker
-name: PR Checker
+name: PR
 
 steps:    
 
-  - name: Build Sql Project
-    image: dockersamples/assets-db-builder
+  - name: clean
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
     commands:
-    - dotnet build SQLProject_Drone_CICD.sln
+     - dotnet clean SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
+     
+  - name: build
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    commands:
+     - dotnet build SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
       
 trigger:
   branch:
