@@ -4,10 +4,15 @@ name: PR Checker
 
 steps:    
 
-  - name: Build Sql Project
-    image: pull 404htm/msbuild
-    ##commands:
-      ##- docker build -t guid-generator-assets .
+  - name: clean
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    commands:
+     - dotnet clean SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
+     
+  - name: build
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    commands:
+     - dotnet build SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
       
 trigger:
   branch:
