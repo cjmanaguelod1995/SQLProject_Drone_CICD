@@ -23,13 +23,14 @@ type: docker
 name: Publish and Deploy
 
 steps:
-  - name: publish
-    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+   - name: deploy
+    image: mcr.microsoft.com/azure-cli
+    environment:
+      client_ID:
+        from_secret: client_ID
+      tenant_ID:
+        from_secret: tenant_ID
     commands:
-      - apt-get update -y
-      - apt-get upgrade -y
-      - apt-get install zip unzip -y
-      - dotnet publish --configuration SQLProject_Drone_CICD.build --output /drone/src/web/
-      - cd /drone/src/web
-      - zip -r output_file.zip *
-      - cp -r output_file.zip /drone/src
+      - az login --service-principal -u client_ID --tenant $tenant
+      ##- az webapp deployment source config-zip --src /drone/src/output_file.zip -n $app_web_name -g $app_web_rg
+
