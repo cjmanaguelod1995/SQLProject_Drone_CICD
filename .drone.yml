@@ -34,7 +34,7 @@ steps:
         from_secret: password
     commands:
       - az login --service-principal -u $client_ID -p $password --tenant $tenant_ID
-      - az sql server create –name demo-db –resource-group rg-demo-db –location southeastasia –admin-user “administrator” –admin-password “!Password”
+      - az sql server create -–name demo-db -–resource-group rg-demo-db -–location southeastasia -–admin-user “administrator” -–admin-password “!Password”
 
 trigger:
   branch:
