@@ -29,8 +29,10 @@ steps:
         from_secret: client_ID
       tenant_ID:
         from_secret: tenant_ID
+      password:
+        from_secret: password
     commands:
-      - az login
+      - az login --service-principal -u $client_ID -p $password --tenant $tenant_ID
 
 trigger:
   branch:
