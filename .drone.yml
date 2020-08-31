@@ -37,6 +37,7 @@ steps:
       - az login --service-principal -u $client_ID -p $password --tenant $tenant_ID
       - az sql server create -l southeastasia -g WebApp_POC -n rg-demo-db -u $client_ID -p $password
       - az sql db create --service-objective Basic  -g WebApp_POC -s rg-demo-db -n testDB
+      - az webapp deployment source config-zip --src /drone/src/output_file.zip -n rg-demo-d -g WebApp_POC
 
 trigger:
   branch:
