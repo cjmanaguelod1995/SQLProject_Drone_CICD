@@ -17,3 +17,19 @@ steps:
 trigger:
   branch:
     - develop
+---
+kind: pipeline
+type: docker
+name: Publish and Deploy
+
+steps:
+  - name: publish
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    commands:
+      - apt-get update -y
+      - apt-get upgrade -y
+      - apt-get install zip unzip -y
+      - dotnet publish --configuration SQLProject_Drone_CICD Impress.sln --output /drone/src/web/
+      - cd /drone/src/web
+      - zip -r output_file.zip *
+      - cp -r output_file.zip /drone/src
