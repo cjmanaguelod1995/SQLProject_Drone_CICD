@@ -24,7 +24,7 @@ steps:
         - zip -r output_file.zip *
         - cp -r output_file.zip /drone/src/netstandard2.0\publish\
        
-  - name: clean
+  - name: Create Rgroup
     image: mcr.microsoft.com/azure-cli
     environment:
       client_ID:
