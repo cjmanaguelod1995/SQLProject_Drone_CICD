@@ -29,7 +29,7 @@ steps:
       - apt-get update -y
       - apt-get upgrade -y
       - apt-get install zip unzip -y
-      - dotnet publish --configuration SQLProject_Drone_CICD Impress.sln --output /drone/src/web/
+      - dotnet publish --configuration SQLProject_Drone_CICD.sln --output /drone/src/web/
       - cd /drone/src/web
       - zip -r output_file.zip *
       - cp -r output_file.zip /drone/src
