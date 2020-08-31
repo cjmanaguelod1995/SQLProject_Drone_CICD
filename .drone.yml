@@ -16,13 +16,14 @@ steps:
 trigger:
   branch:
     - develop
+
 ---
 kind: pipeline
 type: docker
-name: Publish and Deploy
+name: Deploy
 
-steps:
-   - name: deploy
+steps:    
+  - name: clean
     image: mcr.microsoft.com/azure-cli
     environment:
       client_ID:
