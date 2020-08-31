@@ -19,10 +19,10 @@ steps:
         - apt-get update -y
         - apt-get upgrade -y
         - apt-get install zip unzip -y
-        - dotnet publish --configuration SQLProject_Drone_CICD.sln --output /drone/src/netstandard2.0\publish\
-        - cd /drone/src/netstandard2.0\publish\
+        - dotnet publish --configuration SQLProject_Drone_CICD.sln --output /drone/src/netstandard2.0/publish/
+        - cd /drone/src/netstandard2.0/publish/
         - zip -r output_file.zip *
-        - cp -r output_file.zip /drone/src/netstandard2.0\publish\
+        - cp -r output_file.zip /drone/src/netstandard2.0/ublish/
        
   - name: Create Rgroup
     image: mcr.microsoft.com/azure-cli
