@@ -31,6 +31,9 @@ steps:
       tenant_ID:
         from_secret: tenant_ID
     commands:
-      - az login --service-principal -u client_ID --tenant $tenant
+      - az login --service-principal -u client_ID --tenant  $tenant_ID
       ##- az webapp deployment source config-zip --src /drone/src/output_file.zip -n $app_web_name -g $app_web_rg
 
+trigger:
+  branch:
+    - develop
