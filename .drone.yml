@@ -16,3 +16,23 @@ steps:
 trigger:
   branch:
     - develop
+
+---
+kind: pipeline
+type: docker
+name: Deploy
+
+steps:    
+  - name: clean
+    image: mcr.microsoft.com/azure-cli
+    environment:
+      client_ID:
+        from_secret: client_ID
+      tenant_ID:
+        from_secret: tenant_ID
+    commands:
+      - az login
+      
+trigger:
+  branch:
+    - develop
