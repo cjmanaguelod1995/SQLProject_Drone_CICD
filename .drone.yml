@@ -3,7 +3,6 @@ type: docker
 name: PR
 
 steps:    
-
   - name: clean
     image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
