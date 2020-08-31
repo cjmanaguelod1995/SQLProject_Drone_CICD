@@ -12,17 +12,18 @@ steps:
     image: mcr.microsoft.com/dotnet/core/sdk:latest
     commands:
      - dotnet build SQLProject_Drone_CICD.sln
-      
-trigger:
-  branch:
-    - develop
-
----
-kind: pipeline
-type: docker
-name: Deploy
-
-steps:    
+  
+  - name: publish
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    commands:
+        - apt-get update -y
+        - apt-get upgrade -y
+        - apt-get install zip unzip -y
+        - dotnet publish --configuration SQLProject_Drone_CICD.sln --output /drone/src/netstandard2.0\publish\
+        - cd /drone/src/netstandard2.0\publish\
+        - zip -r output_file.zip *
+        - cp -r output_file.zip /drone/src/netstandard2.0\publish\
+       
   - name: clean
     image: mcr.microsoft.com/azure-cli
     environment:
