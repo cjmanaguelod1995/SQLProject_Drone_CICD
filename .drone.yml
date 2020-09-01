@@ -3,42 +3,11 @@ type: docker
 name: PR
 
 steps:    
-  - name: clean
-    image: mcr.microsoft.com/dotnet/sdk:latest
+  - name: Open MSSQL Server
+    image: mcr.microsoft.com/mssql/server:2017-latest
     commands:
-     - dotnet clean SQLProject_Drone_CICD.sln
+     - docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=na0S_WG3yWfW.Lz4lq8k2r6~3bqg2AANF-' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
      
-  - name: build
-    image: mcr.microsoft.com/dotnet/core/sdk:latest
-    commands:
-     - dotnet build SQLProject_Drone_CICD.sln
-  
-  - name: publish
-    image: mcr.microsoft.com/dotnet/core/sdk:3.1
-    commands:
-        - apt-get update -y
-        - apt-get upgrade -y
-        - apt-get install zip unzip -y
-        - dotnet publish SQLProject_Drone_CICD.sln --output /drone/src/publish/
-        - cd /drone/src/publish
-        - zip -r output_file.zip *
-        - cp -r output_file.zip /drone/src
-       
-  - name: Create Rgroup
-    image: mcr.microsoft.com/azure-cli
-    environment:
-      client_ID:
-        from_secret: client_ID
-      tenant_ID:
-        from_secret: tenant_ID
-      password:
-        from_secret: password
-    commands:
-      - az login --service-principal -u $client_ID -p $password --tenant $tenant_ID
-      - az sql server create -l southeastasia -g WebApp_POC -n rg-demo-db -u $client_ID -p $password
-      - az sql db create --service-objective Basic  -g WebApp_POC -s rg-demo-db -n testDB
-      - az sql db deployment source config-zip --src /drone/src/output_file.zip -n rg-demo-d -g WebApp_POC
-
 trigger:
   branch:
     - develop
