@@ -4,7 +4,7 @@ name: PR
 
 steps:
      
-  - name: Open MSSQL Server
+  - name: SQL Server
     image: sijaymm/dacpac-generator:latest
      
 trigger:
