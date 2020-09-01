@@ -4,7 +4,7 @@ name: PR
 
 steps:
   - name:  Pull docker
-    image: pull docker
+    image: docker
      
   - name: Open MSSQL Server
     image: mcr.microsoft.com/mssql/server:2017-latest
