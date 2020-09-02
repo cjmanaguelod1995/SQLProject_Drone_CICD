@@ -6,7 +6,7 @@ steps:
   - name: Open SQL 
     image: mcr.microsoft.com/mssql-tools
     commands:
-     - Sqlcmd -S rg-demo-db.database.windows.net -d testDB -U MyServicePrincipal -P na0S_WG3yWfW.Lz4lq8k2r6~3bqg2AANF- -G
+     - sqlcmd -S rg-demo-db.database.windows.net -d testDB -U MyServicePrincipal -P na0S_WG3yWfW.Lz4lq8k2r6~3bqg2AANF- -G
       
 trigger:
   branch:
