@@ -12,9 +12,9 @@ steps:
      - echo /opt/mssql-tools/bin/
      
   - name: test 
-    image: pqsdev/mssql-sqlpackage
+    image: markhobson/sqlpackage
      commands:
-      - SqlPackage
+      - /?
       
 trigger:
   branch:
