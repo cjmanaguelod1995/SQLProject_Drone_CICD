@@ -27,7 +27,7 @@ steps:
   - name: Deploy to SQL Server 
     image: sijaymm/dacpac-generator
     commands:
-      - sqlpackage  /a:Publish /tsn:tcp:mydemodatabase.database.windows.net /tdn:myDatabase /tu:cjmanaguelod18 /tp:@@Win4me@@cj1995 /sf:/drone/src/publish/SQLProject_Drone_CICD.dacpac
+      - sqlpackage  /a:Publish /tsn:tcp:mydemodatabase.database.windows.net /tdn:myDatabase /tu:cjmanaguelod18 /tp:@@Win4me@@cj1995 /sf:/drone/src/SQLProject_Drone_CICD.build/bin/Debug/netstandard2.0/SQLProject_Drone_CICD.build.dacpac
       
 trigger:
   branch:
