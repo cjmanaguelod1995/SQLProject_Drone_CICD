@@ -14,7 +14,7 @@ steps:
   - name: test 
     image: markhobson/sqlpackage
     commands:
-      - --rm -v /backups:/data --network=host markhobson/sqlpackage \ /a:Import /tsn:tcp:localhost /tdn:db /tu:sa /tp:password /sf:/data/db.bacpac
+      - -v /backups:/data --network=host markhobson/sqlpackage \ /a:Import /tsn:tcp:localhost /tdn:db /tu:sa /tp:password /sf:/data/db.bacpac
       
 trigger:
   branch:
