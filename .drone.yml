@@ -14,7 +14,7 @@ steps:
   - name: test 
     image: markhobson/sqlpackage
     commands:
-      - docker run -it --rm markhobson/sqlpackage
+      - -it --rm markhobson/sqlpackage
       
 trigger:
   branch:
