@@ -14,7 +14,7 @@ steps:
   - name: test 
     image: pqsdev/mssql-sqlpackage
      commands:
-      - SqlPackage.exe
+      - SqlPackage
       
 trigger:
   branch:
