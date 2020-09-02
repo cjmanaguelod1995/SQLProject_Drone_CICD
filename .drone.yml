@@ -14,7 +14,7 @@ steps:
   - name: test 
     image: markhobson/sqlpackage
      commands:
-      - /AccessToken:"tesafdfad"
+      - /backups/db.bacpac
       
 trigger:
   branch:
