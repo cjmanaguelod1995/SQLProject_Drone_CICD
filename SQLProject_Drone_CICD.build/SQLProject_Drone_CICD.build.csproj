@@ -1,7 +1,6 @@
 <Project Sdk="MSBuild.Sdk.SqlProj/1.1.0">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="..\SQLProject_Drone_CICD\**\*.sql" /> 
