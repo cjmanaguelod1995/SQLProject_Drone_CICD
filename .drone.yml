@@ -27,7 +27,7 @@ steps:
   - name: Deploy to SQL Server 
     image: sijaymm/dacpac-generator
     commands:
-      - sqlpackage /a:Publish /p:CommandTimeout=0 /p:DatabaseServiceObjective=P2 /p:dsp="Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider"  /tsn:tcp:mydemodatabase.database.windows.net /tdn:myDatabase /tu:cjmanaguelod18 /tp:@@Win4me@@cj1995 /sf:/drone/src/SQLProject_Drone_CICD.build/bin/Debug/netstandard2.0/SQLProject_Drone_CICD.build.dacpac
+      - sqlpackage /a:Publish /p:CommandTimeout=0 /p:DatabaseServiceObjective=P2 /dsp="Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider"  /tsn:tcp:mydemodatabase.database.windows.net /tdn:myDatabase /tu:cjmanaguelod18 /tp:@@Win4me@@cj1995 /sf:/drone/src/SQLProject_Drone_CICD.build/bin/Debug/netstandard2.0/SQLProject_Drone_CICD.build.dacpac
       
 trigger:
   branch:
