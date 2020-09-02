@@ -14,7 +14,7 @@ steps:
   - name: test 
     image: markhobson/sqlpackage
      commands:
-      - --rm markhobson/sqlpackage
+      - markhobson/sqlpackage
       
 trigger:
   branch:
