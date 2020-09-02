@@ -62,5 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="script\TestTable.sql" />
+    <Build Include="script\TestTable2.sql" />
   </ItemGroup>
 </Project>
