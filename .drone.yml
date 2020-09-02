@@ -14,8 +14,8 @@ steps:
   - name: test 
     image: markhobson/sqlpackage
      commands:
-      - docker run -it --rm -v /backups:/data --network=host markhobson/sqlpackage \
-    /a:Import /tsn:tcp:localhost /tdn:db /tu:sa /tp:password /sf:/data/db.bacpac
+      - `/backups:/data --network=host markhobson/sqlpackage \
+    /a:Import /tsn:tcp:localhost /tdn:db /tu:sa /tp:password /sf:/data/db.bacpac`
       
 trigger:
   branch:
