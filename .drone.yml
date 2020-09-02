@@ -13,6 +13,8 @@ steps:
      
   - name: test 
     image: markhobson/sqlpackage
+    commands:
+      - /?
       
 trigger:
   branch:
