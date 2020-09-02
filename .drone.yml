@@ -3,18 +3,31 @@ type: docker
 name: PR
 
 steps:    
-  - name: Open SQL 
-    image: mcr.microsoft.com/mssql-tools
+  - name: clean
+    image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
-     #- sqlcmd -S rg-demo-db.database.windows.net -d testDB -U MyServicePrincipal -P na0S_WG3yWfW.Lz4lq8k2r6~3bqg2AANF- -G
-     #- sqlcmd -S 127.0.0.1 -U sa -P MyPassword100 > select @@version > go
-     - /opt/mssql-tools/bin/sqlcmd -S mydemodatabase.database.windows.net -U cjmanaguelod18 -P @@Win4me@@cj1995
-     - echo /opt/mssql-tools/bin/
+      - dotnet clean SQLProject_Drone_CICD.sln
+
+  - name: build
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    commands:
+      - dotnet build SQLProject_Drone_CICD.sln
+
+  - name: publish
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    commands:
+      - apt-get update -y
+      - apt-get upgrade -y
+      - apt-get install zip unzip -y
+      - dotnet publish SQLProject_Drone_CICD.sln --output /drone/src/publish/
+      - cd /drone/src/publish
+      - zip -r output_file.zip *
+      - cp -r output_file.zip /drone/src
      
-  - name: test 
-    image: markhobson/sqlpackage
+  - name: Deploy to SQL Server 
+    image: sijaymm/dacpac-generator
     commands:
-      - sqlpackage  /a:Import /tsn:tcp:localhost /tdn:db /tu:sa /tp:password /sf:/data/db.bacpac
+      - sqlpackage  /a:Import /tsn:tcp:mydemodatabase.database.windows.net /tdn:myDatabase /tu:cjmanaguelod18 /tp:@@Win4me@@cj1995 /sf:/drone/src/SQLProject_Drone_CICD.dacpac
       
 trigger:
   branch:
