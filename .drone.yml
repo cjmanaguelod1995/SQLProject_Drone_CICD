@@ -14,7 +14,7 @@ steps:
   - name: test 
     image: markhobson/sqlpackage
     commands:
-      - run  /a:Import
+      - sqlpackage  /a:Import
       
 trigger:
   branch:
