@@ -12,7 +12,7 @@ steps:
      - echo /opt/mssql-tools/bin/
      
   - name: test 
-    image: markhobson/sqlpackage
+    image: pqsdev/mssql-sqlpackage
      #commands:
       #- sqlcmd -S rg-demo-db.database.windows.net -d testDB -U MyServicePrincipal -P na0S_WG3yWfW.Lz4lq8k2r6~3bqg2AANF- -G
       #- sqlcmd -S 127.0.0.1 -U sa -P MyPassword100 > select @@version > go
