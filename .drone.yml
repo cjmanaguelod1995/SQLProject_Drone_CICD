@@ -3,25 +3,35 @@ type: docker
 name: PR
 
 steps:    
-
   - name: clean
-    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
-     - dotnet clean SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
-     - dotnet add package MSBuild.Sdk.SqlProj --version 1.3.0
-     
+      - dotnet clean SQLProject_Drone_CICD.sln
+
   - name: build
     image: mcr.microsoft.com/dotnet/core/sdk:latest
     commands:
-     - dotnet build SQLProject_Drone_CICD\SQLProject_Drone_CICD.csproj
-  
-  - name: Open SQL 
-    image: mcr.microsoft.com/mssql-tools
+      - dotnet build SQLProject_Drone_CICD.sln
+
+  - name: publish
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
     commands:
-     - Sqlcmd -S rg-demo-db.database.windows.net -d testDB -U MyServicePrincipal -P na0S_WG3yWfW.Lz4lq8k2r6~3bqg2AANF- -G
+      - apt-get update -y
+      - apt-get upgrade -y
+      - apt-get install zip unzip -y
+      - dotnet publish SQLProject_Drone_CICD.sln --output /drone/src/publish/
+      - cd /drone/src/publish
+      - zip -r output_file.zip *
+      - cp -r output_file.zip /drone/src
+     
+  - name: Deploy to SQL Server 
+    image: sijaymm/dacpac-generator
+    commands:
+      - sqlpackage /a:Publish /p:CommandTimeout=0 /p:DatabaseServiceObjective=P2 /p:AllowIncompatiblePlatform=True /tsn:tcp:mydemodatabase.database.windows.net /tdn:myDatabase /tu:cjmanaguelod18 /tp:@@Win4me@@cj1995 /sf:/drone/src/SQLProject_Drone_CICD.build/bin/Debug/netstandard2.0/SQLProject_Drone_CICD.build.dacpac
+      
       
 trigger:
   branch:
     - develop
     
-    
+
